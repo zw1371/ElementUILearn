@@ -68,9 +68,16 @@
 
 ## ElementUI代码组织及管理
 ### Dev:play 本地预览
-  作者编写了webpack.demo.js作为本地预览的webpack文件,同时添加examples/play.js作为入口文件,同时引入src/index.js作为所有组件的注册,我们只需要在play/index.vue中写入我们想要查看的组件 然后执行npm run dev:play即可(作者在webpack.demo.js里面配置了alias.main字段(在build/config.js中)使得我们引入的element-ui/src/支持文件可以转到当前项目中),因为css文件与组件文件完全隔离,所以我们看到作者在examples/play.js中 手动引入了css文件
+  - webpack.demo.js Dev:play对应的webpack配置文件
+  - examples/play.js Dev:play的主入口文件
+  - 组件的引入 import Element from 'main/index.js';
+  - main的用法 作者在build/config.js 为main配置了别名,最终会映射到src目录里面
+  - css文件的引入 需要手动引入packages里面的css文件(引入index.css即可)
 ### 开发代码组织
-  开发人员将自己开发的组件放入packages文件,同时将组件里面的sass文件文件放入packages/theme-chalk文件,同时如果packages里面组件需要用到src目录里面方法,使用element-ui/src即可,因为作者同样在(build/config.js里面配置了别名 alias.element-ui)。
+  - packages 组件目录
+  - packages/theme-chalk 组件css目录
+  - src 基础支持文件(混入 指令等)目录
+  - 组件如何引用src基础支持文件 通过引入element-ui/src即可,因为作者同样在build/config.js里面配置了别名 alias.element-ui。
 ### 构建
 #### 整体式构建
 ###### 风格：UMD commonjs2
@@ -79,7 +86,7 @@
   - UMD添加压缩
   - commonjs2去掉压缩 同时添加对资源文件支持
 ###### 整体式构建是如何引入css文件的？
-  - 如果查看官网就知道,在引入ElementUI的时候,我们还是需要手动引入css文件：import 'element-ui/lib/theme-chalk/index.css';所以其实是在gulp构建出css文件后,作者手动将css文件移至lib下。然后使用人员需要手动引入lib目录下css文件。
+  - 使用方需要单独引入lib目录下css文件
 #### 按需引入式构建
 ###### 对应配置文件：webpack.component.js
 ###### 入口文件：components.json
