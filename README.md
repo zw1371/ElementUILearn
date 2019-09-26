@@ -19,14 +19,14 @@
   - test 测试
 ### 基本命令介绍
 #### build:file
-  1 整理icon 使用postcss模拟构建packages/theme-chalk/src/icon.scss,得到生成的所有的class,匹配符合正则 /\.el-icon-([^:]+):before/，得到所有的类名，保存到examples/icon.json。
-  2 动态生成src/index.js 根据components.json里面的组件目录动态生成src/index.js里面的内容
-  3 国际化 略过
-  4 生成versions.json 略过
+  1. 整理icon 使用postcss模拟构建packages/theme-chalk/src/icon.scss,得到生成的所有的class,匹配符合正则 /\.el-icon-([^:]+):before/，得到所有的类名，保存到examples/icon.json。
+  2. 动态生成src/index.js 根据components.json里面的组件目录动态生成src/index.js里面的内容
+  3. 国际化 略过
+  4. 生成versions.json 略过
 #### build:theme
-  1 基础css引入支持 根据components.json里面的组件,匹配到theme-chalk里面的sass文件,动态添加引入脚本
-  2 打包sass Gulp脚本 略过
-  3 移动css文件至lib 略过
+  1. 基础css引入支持 根据components.json里面的组件,匹配到theme-chalk里面的sass文件,动态添加引入脚本
+  2. 打包sass Gulp脚本 略过
+  3. 移动css文件至lib 略过
 #### build:utils
   - 这里使用babel来迁移，应该是希望在迁移的过程中进行babel构建
 #### build:umd
@@ -39,9 +39,9 @@
 #### dev:play
 ###### 执行build:file命令
 ###### 执行build/webpack.demo.js
-  1 入口文件./examples/play.js
-  2 在入口文件引入的app.vue里面写入示例组件
-  3 打开8085端口查看效果
+  1. 入口文件./examples/play.js
+  2. 在入口文件引入的app.vue里面写入示例组件
+  3. 打开8085端口查看效果
 #### dist
 ###### 执行clean命令
 ###### 执行build:file命令
@@ -56,13 +56,13 @@
 ###### 执行bootstrap命令
 ###### 执行build/git-release.sh 检测git冲突
 ###### 执行 build/release.sh
-  1 合并dev到master
-  2 输入要发布的版本号:version
-  3 推送到远程分支
-  4 运行npm run dist编译前端资源
-  5 使用npm version $version修改package.json里面的版本号
-  6 如果版本号包含beta 发布到npm上,加上beta标签
-  7 如果不包含beta标签 发布到npm上 npm publish
+  1. 合并dev到master
+  2. 输入要发布的版本号:version
+  3. 推送到远程分支
+  4. 运行npm run dist编译前端资源
+  5. 使用npm version $version修改package.json里面的版本号
+  6. 如果版本号包含beta 发布到npm上,加上beta标签
+  7. 如果不包含beta标签 发布到npm上 npm publish
 ###### 执行build/bin/gen-indices.js 文档多语言支持
 ###### 执行build/deploy-faas.sh 发布站点
 
@@ -102,9 +102,9 @@
   - 文档生成
   - 组件测试
 ### 开发人员如何将组件移动到组件库
-  1：将组件分为两部分,css文件和脚本文件
-  2：脚本文件放入packages目录,css文件放入packages/theme-chalk目录
-  3：执行build/new.js文件 更新components.json，packages/theme-chalk/src/index.sass, src/index.js的组件引用代码
+  1. 将组件分为两部分,css文件和脚本文件
+  2. 脚本文件放入packages目录,css文件放入packages/theme-chalk目录
+  3. 执行build/new.js文件 更新components.json，packages/theme-chalk/src/index.sass, src/index.js的组件引用代码
 ### 本地组件预览
   模仿ElementUI模式即可
 ### 源代码如何组织
